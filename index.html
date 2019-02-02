@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Word Guess Game</title>
-    <script src="Assets/Javascript/game.js"></script>    
-    <link rel="stylesheet" type="text/css" href="Assets/Css/reset.css">
-    <link rel="stylesheet" type="text/css" href="Assets/Css/style.css">
+    <script src="assets/javascript/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-<body>
+
+<body onload="loadUnderscores()">
     <div class="row">
         <div class="col-12">
-            <h2>Word Guess Game</h2>
+            <h1>Word Guess Game</h1>
         </div>
 
     </div>
     <div>
-        <h5>Guess the video game!</h5>
+        <h3>Guess the video game series!</h5>
     </div>
     <h3>
         <div class="underscore"></div>
-    </h3>        
-        <h3>Right Guesses</br>
-            <span class="right-guess"></span>
-        </h3>
-        <h3>Wrong Guesses</br>
-            <span class=wrong-guess></span>
-        </h3>
-        <h3>Guesses Left</br>
-            <span class=guesses-left></span>
-        </h3>
+    </h3>
+    <h3>Right Guesses</br>
+        <span class="right-guess"></span>
+    </h3>
+    <h3>Wrong Guesses</br>
+        <span class=wrong-guess></span>
+    </h3>
+    <h3>Guesses Left</br>
+        <span class=guesses-left>5</span>
+    </h3>
     <button onclick="window.location.reload()">Play Again!</button>
 </body>
+
 </html>

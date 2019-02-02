@@ -1,43 +1,59 @@
-var wordList = ["blah","wqerty","asdfg"];
+var wordList = ["METROID", "CASTLEVANIA", "TETRIS", "DOOM", "CONTRA",];
 var listSelect = Math.floor(Math.random() * wordList.length);
 var word = wordList[listSelect];
 var underscore = [];
 var rightGuess = [];
 var wrongGuess = [];
+var guessesLeft = 5;
 
 var underscoreText = document.getElementsByClassName("underscore");
 var rightGuessText = document.getElementsByClassName("right-guess");
 var wrongGuessText = document.getElementsByClassName("wrong-guess");
-var guessesLeft = document.getElementsByClassName("wrong-guess");
-guessesLeft = 9;
+var guessesLeftText = document.getElementsByClassName("guesses-left");
 
-//generate underscores
-function generateUnderscores() {
-    for (let i = 0; i < word.length; i++) {
+function loadUnderscores() {
+    for (i = 0; i < word.length; i++) {
         underscore.push("_");
     }
-    return underscore;
+    underscoreText[0].innerHTML = underscore.join(" ");
 }
-
-//https://stackoverflow.com/questions/1966476/how-can-i-process-each-letter-of-text-using-javascript
 
 document.addEventListener("keypress", function (event) {
     var keyGuess = String.fromCharCode(event.keyCode);
-    if (word.indexOf(keyGuess) > -1) {
-        rightGuess.push(keyGuess);
-        underscore[word.indexOf(keyGuess)] = keyGuess;
-        underscoreText[0].innerHTML = underscore.join(" ");
-        rightGuessText[0].innerHTML = rightGuess;
-        if (underscore.join("") == word) {
-            alert("You Win!")
-        }
+    var upperKeyGuess = keyGuess.toUpperCase();
+    if (wrongGuess.length > 4) {
+        alert("You Lose");
     }
     else {
-        wrongGuess.push(keyGuess);
-        wrongGuessText[0].innerHTML = wrongGuess;
-        if (wrongGuess.length > 9) {
-            alert("You Lose");
+        if (word.indexOf(upperKeyGuess) > -1) {
+            if (rightGuess.indexOf(upperKeyGuess) < 0) {
+                for (i = 0; i < word.length; i++) {
+                    if (word.charAt(i) == upperKeyGuess) {
+                        if (rightGuess.indexOf(upperKeyGuess) < 0) {
+                            rightGuess.push(upperKeyGuess);
+                        }
+                        underscore[i] = upperKeyGuess;
+                        underscoreText[0].innerHTML = underscore.join(" ");
+                        rightGuessText[0].innerHTML = rightGuess;
+                    }
+                }
+                if (underscore.join("") == word) {
+                    alert("You Win!")
+                }
+            }
+        }
+        else {
+            if (wrongGuess.length > 4) {
+                alert("You Lose");
+            }
+            else {
+                if (wrongGuess.indexOf(upperKeyGuess) < 0) {
+                    wrongGuess.push(upperKeyGuess);
+                    wrongGuessText[0].innerHTML = wrongGuess;
+                    guessesLeft--;
+                    guessesLeftText[0].innerHTML = guessesLeft;
+                }
+            }
         }
     }
 });
-underscoreText.innerHTML = generateUnderscores().join(" ");
