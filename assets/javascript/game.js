@@ -15,6 +15,7 @@ function loadUnderscores() {
     for (i = 0; i < word.length; i++) {
         underscore.push("_");
     }
+    console.log(underscoreText.innerHTML);
     underscoreText[0].innerHTML = underscore.join(" ");
 }
 
@@ -39,12 +40,14 @@ document.addEventListener("keypress", function (event) {
                 }
                 if (underscore.join("") == word) {
                     alert("You Win!")
+                    window.location.reload();
                 }
             }
         }
         else {
             if (wrongGuess.length > 4) {
                 alert("You Lose");
+                window.location.reload();
             }
             else {
                 if (wrongGuess.indexOf(upperKeyGuess) < 0) {
