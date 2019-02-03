@@ -3,7 +3,7 @@
 
 Test it in your browser!: (https://hchen651.github.io/wordguess/index.html)
 
-##How to play:
+## How to play:
 * Simply press a letter on the keyboard to make a guess.
 * If your guess matches a letter in the word, the appropriate space will be filled. 
 * If it does not match, you lose a chance. Guess wisely, you only have 5 chances!
